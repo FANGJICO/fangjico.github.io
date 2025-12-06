@@ -13,11 +13,11 @@ info:
   # Site title
   title: FANGJI
   # Site subtitle
-  subtitle: official
+  subtitle: 
   # Author name
   author: 方戟
   # Site URL
-  url: https://fangjico.github.io
+  url: https://fangji.de
 # BASIC INFORMATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 
@@ -88,8 +88,8 @@ global:
   single_page: true
   # Whether to enable Preloader.
   preloader:
-    enable: false
-    custom_message: 正在加载，请坐和放宽 # Custom message. If empty, the site title will be displayed
+    enable: true
+    custom_message: 等待响应 # Custom message. If empty, the site title will be displayed
   # Side tools settings
   side_tools:
     # Whether to enable gear rotation animation for settings button
@@ -137,7 +137,7 @@ home_banner:
   title: FANGJI
   # Home banner subtitle
   subtitle:
-    text: ["锐意进取","我们的征途是星辰大海","梦虽遥，追则能达；愿虽艰，持则可圆","志合者，不以山海为远","梦想从学习开始，事业从实践进步","孤灯不明思欲绝，卷帷望月空长叹。—— 长相思·其一","荒桥断浦，柳阴撑出扁舟小。","醉后不知天在水，满船清梦压星河。","千万丈的大厦总要有片奠基石，最初的爱好无可替代。","纵使天光终将熄灭，我们也要歌颂太阳。—— 巴尔蒙特「我来到这世上为的是看太阳」","一点星光，在心上就能反射出太阳。","取法于上，仅得为中；取法于中，故为其下。","理性的人追求的并非快乐，而只是避免痛苦。——叔本华","落叶别树，飘零随风。客无所托，悲与此同。","因为不可能，所以才值得相信。","每一个不曾起舞的日子都是对生命的辜负"] # subtitle text, array
+    text: ["锐意进取","我们的征途是星辰大海","梦虽遥，追则能达；愿虽艰，持则可圆","志合者，不以山海为远","欲买桂花同载酒，终不似，少年游。","孤灯不明思欲绝，卷帷望月空长叹。—— 长相思·其一","荒桥断浦，柳阴撑出扁舟小。","醉后不知天在水，满船清梦压星河。","千万丈的大厦总要有片奠基石，最初的爱好无可替代。","纵使天光终将熄灭，我们也要歌颂太阳。—— 巴尔蒙特「我来到这世上为的是看太阳」","一点星光，在心上就能反射出太阳。","取法于上，仅得为中；取法于中，故为其下。","理性的人追求的并非快乐，而只是避免痛苦。——叔本华","落叶别树，飘零随风。客无所托，悲与此同。","因为不可能，所以才值得相信。","每一个不曾起舞的日子都是对生命的辜负"] # subtitle text, array
     hitokoto:  # 一言配置
       enable: false # Whether to enable hitokoto
       show_author: true # Whether to show author
@@ -445,7 +445,7 @@ plugins:
     enable: false # Whether to enable
   # Aplayer. See https://github.com/DIYgod/APlayer
   aplayer:
-    enable: true # Whether to enable
+    enable: false # Whether to enable
     type: fixed # fixed, mini
     audios:
       - name: 弱水三千 # audio name

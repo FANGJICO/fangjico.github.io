@@ -140,4 +140,4 @@ permalink: term
 
 ------
 
-​	{% btn 同意::/:: fa-check %}
+​	{% btn center large 同意::/:: fa-check %}
