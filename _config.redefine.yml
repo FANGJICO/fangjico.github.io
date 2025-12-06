@@ -13,7 +13,7 @@ info:
   # Site title
   title: FANGJI
   # Site subtitle
-  subtitle: 
+  subtitle: official
   # Author name
   author: 方戟
   # Site URL
@@ -52,9 +52,9 @@ global:
   fonts:
     # Chinese fonts
     chinese: 
-      enable: false # Whether to enable custom chinese fonts
-      family:  # Font family
-      url:  # Font URL to CSS file
+      enable: true # Whether to enable custom chinese fonts
+      family: "HarmonyOS Sans" # Font family
+      url: https://s1.hdslb.com/bfs/static/jinkela/long/font/regular.css # Font URL to CSS file
     # English fonts
     english: 
       enable: false # Whether to enable custom english fonts
@@ -89,7 +89,7 @@ global:
   # Whether to enable Preloader.
   preloader:
     enable: true
-    custom_message: 等待响应 # Custom message. If empty, the site title will be displayed
+    custom_message: 锐意进取 # Custom message. If empty, the site title will be displayed
   # Side tools settings
   side_tools:
     # Whether to enable gear rotation animation for settings button
@@ -163,9 +163,9 @@ home_banner:
   # Home banner custom font
   custom_font: 
     # Whether to enable custom font
-    enable: false
+    enable: true
     # Font family
-    family: "Times New Roman"
+    family: "Noto Sans"
     # URL to font CSS file
     url: https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap
   # Home banner social links
