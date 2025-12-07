@@ -88,8 +88,8 @@ global:
   single_page: true
   # Whether to enable Preloader.
   preloader:
-    enable: true
-    custom_message: 锐意进取 # Custom message. If empty, the site title will be displayed
+    enable: false
+    custom_message: sss # Custom message. If empty, the site title will be displayed
   # Side tools settings
   side_tools:
     # Whether to enable gear rotation animation for settings button
