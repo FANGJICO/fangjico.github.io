@@ -6,7 +6,6 @@ date: 2025-12-15 12:00:00
 
 expires: 2026-01-31 23:59:59
 
-password: 114514
 ---
 
 ##### **下载文件**
@@ -15,7 +14,7 @@ password: 114514
 
 官网下载地址：https://github.com/clash-verge-rev/clash-verge-rev/releases/download/v2.4.3/Clash.Verge\_2.4.3\_x64-setup.exe
 
-镜像：https://ifangji.top/Clash.Verge\_2.4.3\_x64-setup.exe
+镜像：https://c.ifangji.top/Clash.Verge_2.4.3_x64-setup.exe
 
 官网下载速度过慢时建议使用[镜像源](https://ifangji.top/Clash.Verge_2.4.3_x64-setup.exe)。
 
@@ -48,10 +47,6 @@ Clash Verge->首页-> 网络设置->系统代理->开！
 访问大型网站和注册账号时一定要固定一个节点
 
 浏览完成后记得关闭系统代理
-
-{% raw %}  
-<iframe src="c.ifangji.top/BZ-2510.mkv" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
-{% endraw %}
 
 
 
