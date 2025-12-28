@@ -211,7 +211,7 @@ navbar:
     About:
       path: /about 
       icon: fa-regular fa-user # can be empty
-    Emaik: # 一级菜单栏名称
+    Email: # 一级菜单栏名称
       path: /email # 网址，可以为相对路径或者绝对路径
       icon: fa-solid fa-envelope # Fontawesome图标名称（可选）
     Tags: # 一级菜单栏名称
