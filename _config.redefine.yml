@@ -211,9 +211,9 @@ navbar:
     About:
       path: /about 
       icon: fa-regular fa-user # can be empty
-    Cloud: # 一级菜单栏名称
-      path: /cloud # 网址，可以为相对路径或者绝对路径
-      icon: fa-regular fa-cloud # Fontawesome图标名称（可选）
+    Emaik: # 一级菜单栏名称
+      path: /email # 网址，可以为相对路径或者绝对路径
+      icon: fa-solid fa-envelope # Fontawesome图标名称（可选）
     Tags: # 一级菜单栏名称
       path: /tags # 网址，可以为相对路径或者绝对路径
       icon: fa-regular fa-tag # Fontawesome图标名称（可选）
