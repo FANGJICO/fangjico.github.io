@@ -28,11 +28,7 @@ excerpt: "新年前夕，国家主席习近平通过中央广播电视总台和�
 
 
 
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe 
-
-src="https://upos-sz-estgoss.bilivideo.com/upgcxcode/78/64/35101216478/35101216478-1-192.mp4?e=ig8euxZM2rNcNbRVhwdVhwdlhWdVhwdVhoNvNC8BqJIzNbfq9rVEuxTEnE8L5F6VnEsSTx0vkX8fqJeYTj\_lta53NCM=\&deadline=1767192186\&oi=1696788563\&uipk=5\&mid=520196514\&platform=html5\&nbs=1\&trid=623844d4e8054063b20ac2e9741c72aT\&gen=playurlv3\&os=estgoss\&og=ali\&upsig=f99a47904b8800232f2c3f52941d8ecb\&uparams=e,deadline,oi,uipk,mid,platform,nbs,trid,gen,os,og\&bvc=vod\&nettype=0\&bw=698016\&mobi\_app=\&agrr=0\&buvid=\&build=0\&dl=0\&f=T\_0\_0\&orderid=0,1" scrolling="no" border="0" 
-
-frameborder="no" framespacing="0" allowfullscreen="true"> </iframe></div>
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115813944134048&bvid=BV1yCigB8EXf&cid=35101216478&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe></div>
 
 
 
