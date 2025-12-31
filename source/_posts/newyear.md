@@ -2,7 +2,7 @@
 
 
 
-title: 习近平发表2026新年贺词
+title: 国家主席习近平发表二〇二六年新年贺词
 
 
 
@@ -52,8 +52,7 @@ excerpt: "新年前夕，国家主席习近平通过中央广播电视总台和�
 
 
 
-<video crossorigin="anonymous" preload="auto" src="blob:https://www.bilibili.com/ce17892d-763c-47f5-985d-15b6357cb8fd"></video>
-
+<video src="https://ifangji.top/2026XJP.mp4" position= "absolute" width="100%" height="100%" controls="nodownload"></video>
 
 
 
