@@ -1,10 +1,5 @@
 ---
-
-
-
 title: About FangJi
-
-
 
 date: 2025-8-1
 
