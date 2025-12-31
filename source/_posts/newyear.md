@@ -52,7 +52,7 @@ excerpt: "新年前夕，国家主席习近平通过中央广播电视总台和�
 
 
 
-<video width="1920" height="1080" crossorigin="anonymous" preload="auto" src="blob:https://www.bilibili.com/ce17892d-763c-47f5-985d-15b6357cb8fd"></video>
+<video crossorigin="anonymous" preload="auto" src="blob:https://www.bilibili.com/ce17892d-763c-47f5-985d-15b6357cb8fd"></video>
 
 
 
