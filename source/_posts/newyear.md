@@ -23,9 +23,9 @@ excerpt: "新年前夕，国家主席习近平通过中央广播电视总台和�
 
 
 新年前夕，国家主席习近平通过中央广播电视总台和互联网，发表了二〇二六年新年贺词。
-
+<iframe>
 <video crossorigin="anonymous" preload="auto" src="blob:https://www.bilibili.com/ce17892d-763c-47f5-985d-15b6357cb8fd"></video>
-
+<iframe/>
 
 全文如下：
 
