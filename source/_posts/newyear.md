@@ -24,13 +24,7 @@ excerpt: "新年前夕，国家主席习近平通过中央广播电视总台和�
 
 新年前夕，国家主席习近平通过中央广播电视总台和互联网，发表了二〇二六年新年贺词。
 
-
-
-
-
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe src="//player.bilibili.com/player.html?isOutside=true&aid=115813944134048&bvid=BV1yCigB8EXf&cid=35101216478&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe></div>
-
-
+<iframe width="1280" height="714" src="//player.bilibili.com/player.html?isOutside=true&aid=115813944134048&bvid=BV1yCigB8EXf&cid=35101216478&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe></div>
 
 全文如下：
 
