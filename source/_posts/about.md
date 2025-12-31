@@ -15,5 +15,5 @@ permalink: about
 ---
 <center> FANGJI 锐意进取</center>
 
-
+<video src="ifangji.top/BZ-2510.mkv" position= "absolute" width="100%" height="100%" controls="controls"></video>
 
