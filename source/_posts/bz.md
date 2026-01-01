@@ -21,8 +21,7 @@ title: 文件B.mp4
 
 
 
-
-
+permalink: bz/
 
 
 
