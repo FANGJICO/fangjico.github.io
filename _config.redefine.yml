@@ -93,7 +93,7 @@ global:
   # Side tools settings
   side_tools:
     # Whether to enable gear rotation animation for settings button
-    gear_rotation: true
+    gear_rotation: false
     # Whether to auto expand tools list on page load
     auto_expand: false
   # Whether to enable open graph
@@ -408,7 +408,7 @@ footer:
   # Icon in footer, write fontawesome icon code here
   icon: '<i class="fa-solid fa-heart fa-fade" style="--fa-animation-duration: 0.5s; color: #f54545"></i>'
   # The start time of the website, format: YYYY/MM/DD HH:mm:ss
-  start: 2022/12/08 11:45:14
+  start: 2022/01/01 11:45:14
   # Site statistics
   statistics: false # show site statistics or not (total articles, total words)
   # Footer message
@@ -432,7 +432,7 @@ inject:
     -
   # Inject custom footer html code
   footer:
-    -
+    <a href="https://icp.gov.moe/?keyword=20260012" target="_blank">萌ICP备20260012号</a>
     -
 # INJECT <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
