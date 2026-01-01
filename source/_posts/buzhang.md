@@ -78,5 +78,5 @@ permalink: bz
 
 
 
-<video src="https://ifangji.top/BZ.mp4" position= "absolute" width="100%" height="100%" controls="nodownload"></video>
+<video src="https://ifangji.top/BZ.mp4" position= "absolute" width="100%" height="100%" controls controlslist="nodownload"></video>
 

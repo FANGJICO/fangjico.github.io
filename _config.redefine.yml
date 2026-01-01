@@ -415,7 +415,7 @@ footer:
   customize:
   # ICP record number. See https://beian.miit.gov.cn/
   icp:
-    enable: true # Whether to enable
+    enable: false # Whether to enable
     number: 萌ICP备20260012号 # ICP record number
     url: https://icp.gov.moe/?keyword=20260012 # ICP record url
 # FOOTER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
