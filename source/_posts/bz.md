@@ -21,19 +21,6 @@ title: 文件B.mp4
 
 
 
-permalink: bz/
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -62,8 +49,6 @@ date: 2025-9-29
 
 
 password: 114514
-
-permalink: /bz
 
 
 
