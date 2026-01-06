@@ -62,5 +62,5 @@ password: 114514
 
 
 
-<video src="https://ifangji.top/BZ.mp4" position= "absolute" width="100%" height="100%" controls controlslist="nodownload"></video>
+<video src="https://file.fangji.de/BZ.mp4" position= "absolute" width="100%" height="100%" controls controlslist="nodownload"></video>
 
