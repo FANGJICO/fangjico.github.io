@@ -22,7 +22,7 @@ excerpt: "FANGJI的临时电子邮箱服务已经准备就绪，欢迎注册使�
 
 
 
-permalink: email
+
 
 ---
 
