@@ -11,9 +11,9 @@
 # Docs: https://redefine-docs.ohevan.com/basic/info
 info:
   # Site title
-  title: FANGJI
+  title: 方戟
   # Site subtitle
-  subtitle: official
+  subtitle: 锐意进取
   # Author name
   author: 方戟
   # Site URL
@@ -292,7 +292,7 @@ articles:
     image_border_radius: 14px # image border radius
     image_alignment: center # image alignment. left, center
     image_caption: false # Whether to display image caption
-    link_icon: true # Whether to display link icon
+    link_icon: false # Whether to display link icon
     delete_mask: true # Add mask effect to <del> tags, hiding content by default and revealing on hover
     title_alignment: left # Title alignment. left, center
     headings_top_spacing: # Top spacing for headings from h1-h6
