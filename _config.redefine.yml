@@ -212,7 +212,7 @@ navbar:
       path: /about 
       icon: fa-regular fa-user # can be empty
     电子邮箱: # 一级菜单栏名称
-      path: mail.fangji.de/ # 网址，可以为相对路径或者绝对路径
+      path: https://mail.fangji.de/ # 网址，可以为相对路径或者绝对路径
       icon: fa-solid fa-envelope # Fontawesome图标名称（可选）
     Tags: # 一级菜单栏名称
       path: /tags # 网址，可以为相对路径或者绝对路径
