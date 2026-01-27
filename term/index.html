@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="方戟">
+    
+    <!-- Completely eliminate flash of wrong theme -->
+    <script>
+        (function() {
+            const THEME_KEY = "REDEFINE-THEME-STATUS";
+            const DARK = "dark", LIGHT = "light";
+            
+            // Get preferred theme
+            function getTheme() {
+                try {
+                    const saved = localStorage.getItem(THEME_KEY);
+                    if (saved) {
+                        const { isDark } = JSON.parse(saved);
+                        return isDark ? DARK : LIGHT;
+                    }
+                } catch (e) {}
+                
+                return matchMedia("(prefers-color-scheme: dark)").matches ? DARK : LIGHT;
+            }
+            
+            // Apply theme to document
+            function applyTheme(theme) {
+                const isDark = theme === DARK;
+                const root = document.documentElement;
+                
+                // Set data attribute for CSS variables
+                root.setAttribute("data-theme", theme);
+                
+                // Set classes for compatibility
+                root.classList.add(theme);
+                root.classList.remove(isDark ? LIGHT : DARK);
+                root.style.colorScheme = theme;
+            }
+            
+            // Initial application
+            const theme = getTheme();
+            applyTheme(theme);
+            
+            // Listen for system preference changes
+            matchMedia("(prefers-color-scheme: dark)").addEventListener("change", ({ matches }) => {
+                // Only update if using system preference (no localStorage entry)
+                if (!localStorage.getItem(THEME_KEY)) {
+                    applyTheme(matches ? DARK : LIGHT);
+                }
+            });
+            
+            // Set body classes once DOM is ready
+            if (document.readyState !== "loading") {
+                document.body.classList.add(theme + "-mode");
+            } else {
+                document.addEventListener("DOMContentLoaded", () => {
+                    document.body.classList.add(theme + "-mode");
+                    document.body.classList.remove((theme === DARK ? LIGHT : DARK) + "-mode");
+                });
+            }
+        })();
+    </script>
+    
+    <!-- Critical CSS to prevent flash -->
+    <style>
+        :root[data-theme="dark"] {
+            --background-color: #202124;
+            --background-color-transparent: rgba(32, 33, 36, 0.6);
+            --second-background-color: #2d2e32;
+            --third-background-color: #34353a;
+            --third-background-color-transparent: rgba(32, 33, 36, 0.6);
+            --primary-color: #0066CC;
+            --first-text-color: #ffffff;
+            --second-text-color: #eeeeee;
+            --third-text-color: #bebec6;
+            --fourth-text-color: #999999;
+            --default-text-color: #bebec6;
+            --invert-text-color: #373D3F;
+            --border-color: rgba(255, 255, 255, 0.08);
+            --selection-color: #0066CC;
+            --shadow-color-1: rgba(255, 255, 255, 0.08);
+            --shadow-color-2: rgba(255, 255, 255, 0.05);
+        }
+        
+        :root[data-theme="light"] {
+            --background-color: #fff;
+            --background-color-transparent: rgba(255, 255, 255, 0.6);
+            --second-background-color: #f8f8f8;
+            --third-background-color: #f2f2f2;
+            --third-background-color-transparent: rgba(241, 241, 241, 0.6);
+            --primary-color: #0066CC;
+            --first-text-color: #16171a;
+            --second-text-color: #2f3037;
+            --third-text-color: #5e5e5e;
+            --fourth-text-color: #eeeeee;
+            --default-text-color: #373D3F;
+            --invert-text-color: #bebec6;
+            --border-color: rgba(0, 0, 0, 0.08);
+            --selection-color: #0066CC;
+            --shadow-color-1: rgba(0, 0, 0, 0.08);
+            --shadow-color-2: rgba(0, 0, 0, 0.05);
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--default-text-color);
+        }
+        
+        /* Apply body classes as soon as DOM is ready */
+        :root[data-theme="dark"] body {
+            background-color: var(--background-color);
+            color: var(--default-text-color);
+        }
+    </style>
+    
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+        
+        
+        
+            <link rel="preconnect" href="https://evan.beee.top" crossorigin>
+        
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="http://fangji.de/term/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+    
+    
+        
+        <meta name="description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="规则中心">
+<meta property="og:url" content="http://fangji.de/term/index.html">
+<meta property="og:site_name" content="FANGJI">
+<meta property="og:description" content="Hexo Theme Redefine, Redefine Your Hexo Journey.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://fangji.de/images/redefine-og.webp">
+<meta property="article:published_time" content="2026-01-17T00:00:00.000Z">
+<meta property="article:modified_time" content="2026-01-27T15:30:20.755Z">
+<meta property="article:author" content="FANGJI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://fangji.de/images/redefine-og.webp">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/images/leadht.ico" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/leadht.ico">
+    <meta name="theme-color" content="#A31F34">
+    <link rel="shortcut icon" href="/images/leadht.ico">
+    <!--- Page Info-->
+    
+    <title>
+        
+            规则中心 | 方戟
+        
+    </title>
+
+    <link rel="stylesheet" href="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/fonts/Chillax/chillax.css">
+
+    <!--- Inject Part-->
+    
+        
+            
+    
+            
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        <link rel="stylesheet" href="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/css/build/tailwind.css">
+    
+
+    <link rel="stylesheet" href="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/fonts/GeistMono/geist-mono.css">
+    <link rel="stylesheet" href="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/fonts/Geist/geist.css">
+    <!--- Font Part-->
+    
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap" rel="stylesheet">
+    
+    
+    
+        <link href="https://s1.hdslb.com/bfs/static/jinkela/long/font/regular.css" rel="stylesheet">
+    
+    
+    
+    
+        <script  src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/libs/anime.min.js" ></script>
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"fangji.de","root":"/","language":"zh-CN"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":false,"delete_mask":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":true,"count":true,"min2read":true},"author_label":{"enable":false,"auto":false,"list":[]},"code_block":{"copy":true,"style":"simple","highlight_theme":{"light":"github","dark":"vs2015"},"font":{"enable":false,"family":null,"url":null}},"toc":{"enable":true,"max_depth":3,"number":false,"expand":true,"init_open":true},"copyright":{"enable":false,"default":"cc_by_nc_sa"},"lazyload":true,"pangu_js":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#A31F34","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":true,"family":"HarmonyOS Sans","url":"https://s1.hdslb.com/bfs/static/jinkela/long/font/regular.css"},"english":{"enable":false,"family":null,"url":null},"title":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":false,"percentage":false},"website_counter":{"url":"https://cn.vercount.one/js","enable":false,"site_pv":true,"site_uv":true,"post_pv":true},"single_page":true,"preloader":{"enable":true,"custom_message":"FANGJI-锐意进取"},"side_tools":{"gear_rotation":false,"auto_expand":false},"open_graph":{"enable":true,"image":"/images/redefine-og.webp","description":"Hexo Theme Redefine, Redefine Your Hexo Journey."},"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/lt.jpg","dark":"/images/dk.jpg"},"title":"FANGJI","subtitle":{"text":["锐意进取","我见青山多妩媚，料青山见我应如是。","梦虽遥，追则能达；愿虽艰，持则可圆","志合者，不以山海为远","欲买桂花同载酒，终不似，少年游。","孤灯不明思欲绝，卷帷望月空长叹。—— 长相思·其一","荒桥断浦，柳阴撑出扁舟小。","醉后不知天在水，满船清梦压星河。","千万丈的大厦总要有片奠基石，最初的爱好无可替代。","纵使天光终将熄灭，我们也要歌颂太阳。—— 巴尔蒙特「我来到这世上为的是看太阳」","一点星光，在心上就能反射出太阳。","取法于上，仅得为中；取法于中，故为其下。","理性的人追求的并非快乐，而只是避免痛苦。——叔本华","落叶别树，飘零随风。客无所托，悲与此同。","因为不可能，所以才值得相信。","每一个不曾起舞的日子都是对生命的辜负"],"hitokoto":{"enable":false,"show_author":true,"api":"https://v1.hitokoto.cn/?c=i&c=k&max_length=25"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":true,"family":"Noto Sans","url":"https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap"},"social_links":{"enable":true,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":null,"fa-brands fa-steam":"https://steamcommunity.com/id/FANGJI/"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":false},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":"弱水三千","artist":null,"url":"/images/rsq.flac","cover":"/images/sh.jpg","lrc":null}]},"mermaid":{"enable":false,"version":"11.4.1"}},"version":"2.8.5","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-house"},"About":{"path":"/about","icon":"fa-regular fa-user"},"电子邮箱":{"path":"https://mail.fangji.de/","icon":"fa-solid fa-envelope"},"Tags":{"path":"/tags","icon":"fa-regular fa-tag"}},"search":{"enable":false,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"auto","excerpt_length":200,"categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2022/01/01 11:45:14"};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    <link rel="stylesheet" href="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/fontawesome/fontawesome.min.css">
+    <link rel="stylesheet" href="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/fontawesome/brands.min.css">
+    <link rel="stylesheet" href="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/fontawesome/solid.min.css">
+    <link rel="stylesheet" href="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/fontawesome/regular.min.css">
+    
+    
+        <link rel="stylesheet" href="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/fontawesome/light.min.css">
+    
+    
+    
+        <link rel="stylesheet" href="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/fontawesome/sharp-solid.min.css">
+    
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+
+<body>
+	<div class="progress-bar-container">
+	
+
+	
+	<span class="pjax-progress-bar"></span>
+	<!--        <span class="swup-progress-icon">-->
+	<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+	<!--        </span>-->
+	
+</div>
+
+<style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    <h2 class="ml13">
+        FANGJI-锐意进取
+    </h2>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+        var animation = anime.timeline({ loop: true })
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [20, 0],
+                translateZ: 0,
+                opacity: [0, 1],
+                filter: ['blur(5px)', 'blur(0px)'],
+                easing: "easeOutExpo",
+                duration: 1200,
+                delay: (el, i) => 300 + 20 * i,
+            })
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [0, -20],
+                opacity: [1, 0],
+                filter: ['blur(0px)', 'blur(5px)'],
+                easing: "easeInExpo",
+                duration: 1000,
+                delay: (el, i) => 15 * i,
+                complete: function() {
+                    hidePreloader();
+                }
+            }, '-=700');
+
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            setTimeout(hidePreloader, 5000); // Call hidePreloader after 5000 milliseconds if not already called by animation
+        });
+
+        function hidePreloader() {
+            var preloader = document.querySelector('.preloader');
+            preloader.style.opacity = '0';
+            setTimeout(function () {
+                preloader.style.display = 'none';
+            }, 200);
+        }
+    </script>
+</div>
+
+<main class="page-container" id="swup">
+
+	
+
+	<div class="main-content-container flex flex-col justify-between min-h-dvh">
+		<div class="main-content-header">
+			<header class="navbar-container px-6 md:px-12">
+    <div class="navbar-content transition-navbar ">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                
+                方戟
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-house fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   target="_blank" rel="noopener" href="https://mail.fangji.de/"
+                                        >
+                                    <i class="fa-solid fa-envelope fa-fw"></i>
+                                    电子邮箱
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags"
+                                        >
+                                    <i class="fa-regular fa-tag fa-fw"></i>
+                                    标签
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-dvh w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-house fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           target="_blank" rel="noopener" href="https://mail.fangji.de/"
+                        >
+                            <span>
+                                电子邮箱
+                            </span>
+                            
+                                <i class="fa-solid fa-envelope fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags"
+                        >
+                            <span>
+                                标签
+                            </span>
+                            
+                                <i class="fa-regular fa-tag fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">0</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">5</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+		</div>
+
+		<div class="main-content-body transition-fade-up">
+			
+
+			<div class="main-content">
+				<div class="post-page-container flex relative justify-between box-border w-full h-full">
+	<div class="article-content-container">
+
+		<div class="article-title relative w-full">
+			
+			
+			
+			<img src="/images/m.jpg" alt="规则中心" class="w-full h-60 sm:h-72 md:h-80 object-cover sm:rounded-t-large dark:brightness-75" />
+			
+			<div class="w-full flex items-center absolute bottom-0 justify-start">
+				<h1 class="article-title-cover text-center mx-6 my-6 text-second-text-color bg-background-color-transparent px-4 py-3 text-3xl sm:text-4xl md:text-5xl font-semibold backdrop-blur-lg rounded-xl border border-border-color ">规则中心</h1>
+			</div>
+			
+		</div>
+
+		
+		<div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+			<div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+				<img src="/images/leadht.ico">
+			</div>
+			<div class="info flex flex-col justify-between">
+				<div class="author flex items-center">
+					<span class="name text-default-text-color text-lg font-semibold">方戟</span>
+					
+				</div>
+				<div class="meta-info">
+					<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2026-01-17</span>
+        <span class="mobile">2026-01-17</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2026-01-27 15:30:20</span>
+            <span class="mobile">2026-01-27 15:30:20</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+    
+
+    
+    
+    
+    
+</div>
+
+				</div>
+			</div>
+		</div>
+		
+
+		
+
+
+		<div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+			<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>欢迎访问FANGJI.DE，请仔细阅读使用条款和隐私政策，因为它们解释了您使用FANGJI提供的服务的重要信息。</p>
+<p>在使用本网站及其相关服务前，请您仔细阅读以下条款。如您为未满16周岁的未成年人，请在法定监护人陪同下阅读。</p>
+<p>FANGJI的不同网站可能会有特定的条款和政策，FANGJI会明确标识，请在使用这些服务之前阅读这些服务的使用条款和隐私政策。</p>
+<p>如您对协议内容有任何疑问，请通过以下方式联系我们：</p>
+<p>电子邮箱：<a class="link"   href="mailto:&#102;&#x61;&#x6e;&#x67;&#106;&#105;&#x6e;&#98;&#64;&#x70;&#x72;&#111;&#116;&#111;&#x6e;&#46;&#x6d;&#101;" >&#102;&#x61;&#x6e;&#x67;&#106;&#105;&#x6e;&#98;&#64;&#x70;&#x72;&#111;&#116;&#111;&#x6e;&#46;&#x6d;&#101;</a> 或 <a class="link"   href="mailto:&#x73;&#x75;&#x70;&#x70;&#x6f;&#x72;&#x74;&#64;&#x66;&#x61;&#x6e;&#x67;&#x6a;&#x69;&#x2e;&#x64;&#x65;" >&#x73;&#x75;&#x70;&#x70;&#x6f;&#x72;&#x74;&#64;&#x66;&#x61;&#x6e;&#x67;&#x6a;&#x69;&#x2e;&#x64;&#x65;</a></p>
+<h2 id="FANGJI服务协议"><a href="#FANGJI服务协议" class="headerlink" title="FANGJI服务协议"></a>FANGJI服务协议</h2><p>创建日期：2022-12-18</p>
+<p>修改日期：2026-1-18</p>
+<p>生效日期：2026-1-18</p>
+<p>本使用协议是FANGJI 与您(自然人使用者)达成的具有约束力的协议。您在使用FANGJI.DE和任何由FANGJI提供的服务时，都需要遵守本使用条款</p>
+<p>您需要遵守(1)FANGJI服务协议;(2)特定服务的附加条款(如有) 才能够使用方戟服务。<br>您做出任何明示或暗示（如使用FANGJI提供的服务，勾选候选框，点击按钮等）就代表您同意本协议。</p>
+<p>若您做出了违反本使用条款的行为，FANGJI有权撤回该授权，且无需向您进行通知。</p>
+<ol>
+<li><p><strong>用户承诺，不得在使用本网站时侵犯他人的合法权益或违反适用的法律法规。</strong></p>
+</li>
+<li><p><strong>网页内容“按原样”提供，FANGJI不对其完整性、准确性、可用性、安全性作任何明示或暗示的保证。用户理解并接受，因网络攻击、系统故障、第三方行为等不可控因素导致的服务中断或数据损失，FANGJI不承担法律责任。</strong></p>
+</li>
+<li><p><strong>用户不得做出任何干扰或破坏 FANGJI服务 的行为</strong>，包括但不限于以下行为：<br>-使用爬虫软件，网页机器人，网页采集设备或其他自动设备、程序、算法或方法，或者任何类似或同等的手动流程来访问、获取、采集、监控监视本网站。<br>-破坏FANGJI服务的运行；破坏FANGJI服务的运行平台&#x2F;网络<br>FANGJI保留禁止此类行为的权利。</p>
+</li>
+<li><p>您不得在FANGJI提供的服务的过程中做出有害行为，包括但不限于:<br> -违反所在地法律法规	<br> -违反基本道德原则<br> -违反FANGJI服务协议和&#x2F;或附加条款<br> -骚扰或伤害他人或您自己<br> -引入恶意软件<br> -冒犯FANGJI<br> -违反FANGJI网页中机器可读的指令（比如用于禁止抓取、训练或其他活动的 robots.txt 文件），利用自动化手段访问任意FANGJI服务中的内容<br> -其他FANGJI判断存在违规的行为</p>
+</li>
+<li><p>FANGJI保留随时修改本协议的权利。修改后的协议将在本页面公布，不另行单独通知用户。若用户继续使用服务，视为接受修订后的协议。</p>
+</li>
+</ol>
+<h2 id="FANGJI隐私政策"><a href="#FANGJI隐私政策" class="headerlink" title="FANGJI隐私政策"></a>FANGJI隐私政策</h2><p>创建日期：2022-12-18</p>
+<p>修改日期：2026-1-18</p>
+<p>生效日期：2026-1-18</p>
+<p>这是FANGJI提供服务的基本隐私政策，特定服务可能会有特定的隐私政策，请查阅具体隐私政策。</p>
+<p>FANGJI隐私政策 说明了FANGJI.DE 如何收集处理您的信息。请仔细阅读——了解我们如何收集和使用您的信息，以及您可以如何控制这些信息非常重要。</p>
+<p>如上文所述，本隐私政策仅适用于FANGJI.DE网页。如您使用FANGJI或其关联方运作的产品或服务，并欲了解相关数据如何被处理，请查阅该产品或服务的隐私政策。</p>
+<p>如果您不同意按照本隐私政策所述方式处理您的个人信息，请不要在收到请求时提供您的信息，并停止使用本网页。</p>
+<p>FANGJI不会出售您的信息。FANGJI不会未经您的明确允许收集您的隐私信息。</p>
+<h4 id="Cookie以及类似技术"><a href="#Cookie以及类似技术" class="headerlink" title="Cookie以及类似技术"></a>Cookie以及类似技术</h4><p>我们使用Cookie和类似技术来提升您的网页使用体验。Cookie是一种文本文件，当放置在您的设备上时，能够让我们提供特定的特性和功能。</p>
+<p>我们使用Cookie以及类似技术来区分用户、判断网页的状态等，以便为您更好地提供服务。</p>
+<h4 id="IP地址和设备标识符"><a href="#IP地址和设备标识符" class="headerlink" title="IP地址和设备标识符"></a>IP地址和设备标识符</h4><p>我们收集IP地址和设备标识符等信息来区分用户，为您提供更好的服务。</p>
+<h4 id="其他必须的信息"><a href="#其他必须的信息" class="headerlink" title="其他必须的信息"></a>其他必须的信息</h4><p>FANGJI的部分服务可能会有其他数据的收集，请您参照该服务的隐私政策。</p>
+<h4 id="我们如何处理您的信息"><a href="#我们如何处理您的信息" class="headerlink" title="我们如何处理您的信息"></a>我们如何处理您的信息</h4><p>我们将严格按照法律法规的规定，及根据本隐私政策，采取严格安全的保护措施，保护您的权利。</p>
+<p>我们使用云服务商提供的服务来存储处理您的信息。</p>
+<p>我们仅在合理必要的情况下共享您的个人信息。这类情况包括：</p>
+<ul>
+<li>监管机构、司法机关和执法机构，以及出于安全、保障或遵守法律之目的的其他第三方。在一些情况下，我们依法须向当局披露您的信息，例如遵守法律义务或程序、强制实施我们的条款、处理与安全或欺诈相关的事宜，或者保护我们的用户。为遵守有效的法律程序条款，如传票、法院命令或搜查令，我们可能在获得或未获得您同意的情况下做出这些披露。一般而言，法律程序的条款禁止我们通知您任何此类披露。如果政府实体未提供所需的传票、法院命令或搜查令，则我们可能会征求您的同意，以按照政府实体的要求披露信息。</li>
+</ul>
+<h5 id=""><a href="#" class="headerlink" title=""></a></h5><p>如果本隐私政策有任何变更，我们将在此发布更新的隐私政策。请定期访问本页面，查看本隐私政策是否有任何更新或变更。</p>
+<h2 id="三、FANGJIMAIL使用条款"><a href="#三、FANGJIMAIL使用条款" class="headerlink" title="三、FANGJIMAIL使用条款"></a>三、FANGJIMAIL使用条款</h2><p>创建日期：2025-12-28</p>
+<p>修改日期：2026-1-18</p>
+<p>生效日期：2026-1-18</p>
+<p>这是FANGJIMAIL（网页：MAIL.FANGJI.DE和TELEGRAM机器人FANGJI）的使用条款。</p>
+<p>如您选择以页面确认或其他任何方式明示或者默示表示接受本服务条款，或以登录、访问等方式使用FANGJI提供的FANGJIMAIL，即表示您与FANGJI已达成协议，自愿接受本服务条款的所有内容。如用户不同意本服务条款任意内容，请勿注册或使用FANGJIMAIL账号。</p>
+<h4 id="使用规定"><a href="#使用规定" class="headerlink" title="使用规定"></a>使用规定</h4><p>您可以通过FANGJIMAIL的网页注册FANGJIMAIL账号。您注册账号后，您将获得该账号的使用权。</p>
+<p>您不得将账号赠与或出售给他人使用。<strong>账户的使用权归属注册账号的自然人。</strong></p>
+<p>FANGJIMAIL账号可用于个人的接收和发送电子邮件。您可以通过发送邮件给<a class="link"   href="mailto:&#102;&#x61;&#x6e;&#103;&#106;&#x69;&#x6e;&#98;&#x40;&#x70;&#x72;&#x6f;&#116;&#x6f;&#110;&#x2e;&#109;&#x65;" >&#102;&#x61;&#x6e;&#103;&#106;&#x69;&#x6e;&#98;&#x40;&#x70;&#x72;&#x6f;&#116;&#x6f;&#110;&#x2e;&#109;&#x65;</a>或<a class="link"   href="mailto:&#115;&#x65;&#114;&#118;&#x69;&#x63;&#101;&#x40;&#102;&#x61;&#x6e;&#x67;&#106;&#x69;&#x2e;&#x64;&#x65;" >&#115;&#x65;&#114;&#118;&#x69;&#x63;&#101;&#x40;&#102;&#x61;&#x6e;&#x67;&#106;&#x69;&#x2e;&#x64;&#x65;</a>的方式开通TELEGRAM机器人使用。</p>
+<p>您应理解，FANGJIMAIL的账户注册可能需要注册码，您可以通过发送邮件给<a class="link"   href="mailto:&#x66;&#97;&#110;&#x67;&#106;&#105;&#110;&#98;&#64;&#x70;&#114;&#111;&#x74;&#x6f;&#110;&#46;&#x6d;&#101;" >&#x66;&#97;&#110;&#x67;&#106;&#105;&#110;&#98;&#64;&#x70;&#114;&#111;&#x74;&#x6f;&#110;&#46;&#x6d;&#101;</a>或<a class="link"   href="mailto:&#115;&#101;&#114;&#118;&#x69;&#x63;&#101;&#64;&#102;&#x61;&#110;&#103;&#106;&#x69;&#46;&#100;&#x65;" >&#115;&#101;&#114;&#118;&#x69;&#x63;&#101;&#64;&#102;&#x61;&#110;&#103;&#106;&#x69;&#46;&#100;&#x65;</a>的方式获取注册码。</p>
+<p>您应理解，用户应对其账户下的一切行为负责。因用户保管不善导致账户被盗、密码泄露等造成的损失，FANGJI不承担责任。如对<strong>账户或账户密码遗失，FANGJI不会为您恢复原有账户和账户内信息</strong>。</p>
+<h4 id="使用限制"><a href="#使用限制" class="headerlink" title="使用限制"></a>使用限制</h4><p>用户保证其在注册和使用账号时，不得有以下情形：</p>
+<ul>
+<li>破坏FANGJIMAIL正常运行</li>
+<li>影响其他用户使用</li>
+<li>违反国家法律法规</li>
+<li>违反人类基本道德原则</li>
+<li>制作、传播计算机病毒等破坏性程序的，以及非法侵入他人网络、干扰他人网络正常功能、窃取网络数据等危害网络安全、侵害他人权益</li>
+<li>发表、传送、传播骚扰、广告信息及垃圾信息</li>
+<li>以及其他FANGJI认定超出FANGJIMAIL合理使用的行为和违反相关的法律、法规、规章、条例等其他具有法律效力的规范的行为</li>
+</ul>
+<p>如您违反FANGJIMAIL使用协议，我们有权停止并禁止您访问和使用FANGJIMAIL。</p>
+<p>您承诺，<strong>您不能利用FANGJIMAIL各项服务进行销售或其他商业用途</strong>。如用户有需要将服务用于商业用途，应书面通知FANGJI并获得我们的明确授权。</p>
+<p><strong>用户理解，如FANGJI发现或者收到被侵权人举报或投诉您的行为存在违反相关法律法规、本服务条款规定情形的，我们有权基于法律法规的要求或相关事实依据按情节的严重程度采取合理及相适的限制、中止、冻结或终止用户对FANGJI提供的服务的使用等措施，并依据法律法规保存有关信息向国家有关机关报告等；由此给用户带来的一切损失（包括但不限于通信中断，用户资料、邮件和虚拟财产及相关数据、增值服务、产品或服务等无法使用等），由用户自行承担。</strong></p>
+<h4 id="服务的变更、中止、取消或终止"><a href="#服务的变更、中止、取消或终止" class="headerlink" title="服务的变更、中止、取消或终止"></a>服务的变更、中止、取消或终止</h4><p>FANGJI始终在不断变更和改进服务。我们可能会增加或删除功能，也可能暂停或彻底停止某项服务。用户同意我们可能会出于某些原因而选择终止FANGJIMAIL服务。</p>
+<p>FANGJI有权根据实际情况自行决定向单个用户提供的FANGJIMAIL账号服务或其他服务标准。</p>
+<p>如果您主动停止使用相关服务或服务被终止或取消，我们会终止该账户的访问权限，<strong>您无法再注册相同的账号</strong>。我们有权从服务器上永久地删除您的数据。用户数据删除后，我们没有义务向您返还任何数据。</p>
+<h4 id="不可抗力"><a href="#不可抗力" class="headerlink" title="不可抗力"></a>不可抗力</h4><p>鉴于互联网的特殊性，FANGJI不对服务的稳定性、准确性、连贯性作保证。</p>
+<p><strong>服务按原样提供，FANGJI不对其完整性、准确性、可用性、安全性作任何明示或暗示的保证。用户理解并接受，因网络攻击、系统故障、第三方行为等不可控因素导致的服务中断或数据损失，FANGJI不承担法律责任。</strong></p>
+
+		</div>
+
+		
+
+		
+
+		
+
+		
+		<div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+			
+			
+			<div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+				<a class="next" rel="next" href="/newyear/">
+					<span class="title flex justify-center items-center">
+						<span class="post-nav-title-item truncate max-w-48">国家主席习近平发表二〇二六年新年贺词</span>
+						<span class="post-nav-item">下一篇</span>
+					</span>
+					<span class="right arrow-icon flex justify-center items-center">
+						<i class="fa-solid fa-chevron-right"></i>
+					</span>
+				</a>
+			</div>
+			
+		</div>
+		
+
+
+		
+		<div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+			<div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div id="waline"></div>
+    <script type="module" data-swup-reload-script>
+      import { init } from '/js/libs/waline.mjs';
+
+      function loadWaline() {
+        init({
+          el: '#waline',
+          serverURL: 'https://comment.fangji.de/',
+          dark: 'body[class~="dark-mode"]',
+          reaction: false,
+          requiredMeta: ['nick', 'mail'],
+          emoji: [],
+                    lang: 'zh-CN',
+          turnstileKey: '0x4AAAAAACOtY6uWj0BuDhBz',
+        });
+      }
+
+      if (typeof swup !== 'undefined') {
+        loadWaline();
+      } else {
+        window.addEventListener('DOMContentLoaded', loadWaline);
+      }
+    </script>
+
+
+
+        
+    
+</div>
+
+		</div>
+		
+	</div>
+
+	
+	<div class="toc-content-container">
+		<div class="post-toc-wrap">
+	<div class="post-toc">
+		<div class="toc-title">目录</div>
+		<div class="page-title">规则中心</div>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FANGJI%E6%9C%8D%E5%8A%A1%E5%8D%8F%E8%AE%AE"><span class="nav-text">FANGJI服务协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FANGJI%E9%9A%90%E7%A7%81%E6%94%BF%E7%AD%96"><span class="nav-text">FANGJI隐私政策</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89%E3%80%81FANGJIMAIL%E4%BD%BF%E7%94%A8%E6%9D%A1%E6%AC%BE"><span class="nav-text">三、FANGJIMAIL使用条款</span></a></li></ol>
+
+	</div>
+</div>
+	</div>
+	
+</div>
+			</div>
+
+			
+		</div>
+
+		<div class="main-content-footer">
+			<footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2026&nbsp;&nbsp;<i class="fa-sharp fa-solid fa-heart fa-fade" style="--fa-animation-duration: 1.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">方戟</a>
+            
+        </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.8.5</a></span>
+        </div>
+        
+        
+        
+        
+            
+                
+        
+                
+        
+        
+    </div>  
+</footer>
+		</div>
+	</div>
+
+	
+	<div class="post-tools">
+		<div class="post-tools-container">
+	<ul class="article-tools-list">
+		<!-- TOC aside toggle -->
+		
+		<li class="right-bottom-tools page-aside-toggle">
+			<i class="fa-regular fa-outdent"></i>
+		</li>
+		
+
+		<!-- go comment -->
+		
+		<li class="go-comment">
+			<i class="fa-regular fa-comments"></i>
+		</li>
+		
+	</ul>
+</div>
+	</div>
+	
+
+	<div class="right-side-tools-container">
+		<div class="side-tools-container">
+	<ul class="hidden-tools-list">
+		<li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-plus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+			<i class="fa-regular fa-magnifying-glass-minus"></i>
+		</li>
+
+		<li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+			<i class="fa-regular fa-moon"></i>
+		</li>
+
+		<!-- rss -->
+		
+
+		
+		<li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+			<i class="fa-regular fa-arrow-up"></i>
+		</li>
+		
+
+		<li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+			<i class="fa-regular fa-arrow-down"></i>
+		</li>
+	</ul>
+
+	<ul class="visible-tools-list">
+		<li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+			<i class="fa-regular fa-cog "></i>
+		</li>
+		
+		
+	</ul>
+</div>
+	</div>
+
+	<div class="image-viewer-container">
+	<img src="">
+</div>
+
+	
+
+</main>
+
+
+<script  src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/libs/Swup.min.js" ></script><script  src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/libs/SwupSlideTheme.min.js" ></script><script  src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/libs/SwupScriptsPlugin.min.js" ></script><script  src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/libs/SwupProgressPlugin.min.js" ></script><script  src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/libs/SwupScrollPlugin.min.js" ></script><script  src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/libs/SwupPreloadPlugin.min.js" ></script>
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+	<script type="module" src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/tools/imageViewer.js" ></script><script type="module" src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/utils.js" ></script><script type="module" src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/main.js" ></script><script type="module" src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/layouts/navbarShrink.js" ></script><script type="module" src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/tools/scrollTopBottom.js" ></script><script type="module" src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/tools/lightDarkSwitch.js" ></script><script type="module" src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/layouts/categoryList.js" ></script>
+
+
+
+
+    <script type="module" src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/tools/codeBlock.js" ></script>
+
+
+
+    <script type="module" src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/layouts/lazyload.js" ></script>
+
+
+
+
+
+  <script  src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/libs/Typed.min.js" ></script>
+  <script type="module" src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/plugins/typed.js" ></script>
+
+
+
+
+
+
+
+
+
+
+    <script type="module" src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/tools/tocToggle.js" data-swup-reload-script></script><script type="module" src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/layouts/toc.js" data-swup-reload-script></script><script type="module" src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/plugins/tabs.js" data-swup-reload-script></script>
+
+
+<script  src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/libs/moment-with-locales.min.js" data-swup-reload-script></script>
+<script type="module" src="https://evan.beee.top/projects/hexo-theme-redefine@2.8.5/source/js/build/layouts/essays.js" data-swup-reload-script></script>
+
+
+
+
+	
+</body>
+
+</html>

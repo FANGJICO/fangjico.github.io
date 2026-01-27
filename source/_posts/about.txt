@@ -1,8 +1,0 @@
----
-title: About FangJi
-date: 2025-8-1
-thumbnail: /image/abt.jpg
-comments: false
-permalink: about
----
-Hello 我是FangJi 一位在校高中学生
